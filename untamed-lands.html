@@ -156,7 +156,7 @@
 
     .download-btn {
       display: inline-block;
-      margin: 40px auto;
+      margin: 40px auto 10px;
       padding: 18px 45px;
       background: linear-gradient(90deg, #00ffff, #0088ff);
       border-radius: 40px;
@@ -174,9 +174,17 @@
     @keyframes glowBtn { from { box-shadow: 0 0 15px #00ffff; } to { box-shadow: 0 0 35px #00ffff; } }
     .download-btn:hover { transform: scale(1.1); background: linear-gradient(90deg, #00ccff, #00ffff); }
 
+    .dl-count {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      font-size: 1.1em;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #00ffffaa;
+    }
+
     .main-menu-btn {
       display: inline-block;
-      margin: 20px auto;
+      margin: 25px auto;
       padding: 12px 30px;
       background: linear-gradient(90deg, #00ffff, #0088ff);
       border-radius: 30px;
@@ -257,7 +265,9 @@
   </div>
 
   <div style="text-align:center;">
-    <a class="download-btn fade-in" href="https://sasilu.itch.io/untamed-lands-by-siulo-studios" target="_blank">⬇ Download on Itch.io</a>
+    <!-- Direct APK Download -->
+    <a class="download-btn fade-in" href="UntamedLands_v2.apk" download>⬇ Download APK (v2.0.2)</a>
+    <p id="dl-count" class="dl-count fade-in">📦 Downloads: ...</p>
     <br>
     <a class="main-menu-btn fade-in" href="index.html">🏠 Main Menu</a>
   </div>
@@ -265,12 +275,11 @@
   <footer class="fade-in">© 2025 Siulo Studios | Crafted by Sasilu — Powered by Unity Engine 🚀</footer>
 
   <script>
-    // Fade-in sequence after loading
+    // Fade-in & stars & meteors
     window.addEventListener("load", () => {
       const fadeElements = document.querySelectorAll(".fade-in");
       fadeElements.forEach((el, i) => { setTimeout(() => el.style.animationDelay = i * 0.3 + "s", 0); });
 
-      // Stars
       for (let i = 0; i < 100; i++) {
         const star = document.createElement("div");
         star.classList.add("star");
@@ -281,12 +290,11 @@
         document.querySelector(".stars").appendChild(star);
       }
 
-      // Meteors
       const meteorCount = 5;
       for(let i=0;i<meteorCount;i++) createMeteor();
     });
 
-    // Meteor animation
+    // Meteors
     function createMeteor() {
       const meteor = document.createElement("div");
       meteor.classList.add("meteor");
@@ -326,7 +334,21 @@
         ], { duration: 500+Math.random()*300, easing:"ease-out" }).onfinish=()=>spark.remove();
       }
     }
+
+    // === Download Counter ===
+    const dlBtn = document.querySelector('.download-btn');
+    const dlCountEl = document.getElementById('dl-count');
+
+    // Fetch current count
+    fetch('https://api.countapi.xyz/get/siulo-studios/untamedlands')
+      .then(r => r.json())
+      .then(d => dlCountEl.textContent = "📦 Downloads: " + d.value)
+      .catch(()=>dlCountEl.textContent="📦 Downloads: 0");
+
+    // Increment when clicked
+    dlBtn.addEventListener('click', () => {
+      fetch('https://api.countapi.xyz/hit/siulo-studios/untamedlands');
+    });
   </script>
 </body>
 </html>
-
