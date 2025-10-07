@@ -18,7 +18,6 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    /* ==== STAR BACKGROUND ==== */
     .stars, .meteors {
       position: fixed;
       width: 100%;
@@ -37,17 +36,9 @@
 
     @keyframes moveStars { from { background-position: 0 0; } to { background-position: -10000px 10000px; } }
 
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite alternate;
-    }
-
+    .star { position: absolute; background: white; border-radius: 50%; opacity: 0.8; animation: twinkle 2s infinite alternate; }
     @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
 
-    /* ==== LOADING SCREEN ==== */
     #loader {
       position: fixed;
       top: 0; left: 0;
@@ -64,57 +55,16 @@
 
     @keyframes fadeOutLoader { to { opacity: 0; visibility: hidden; } }
 
-    #loader img {
-      width: 150px;
-      animation: pulseLogo 2s ease-in-out infinite;
-      filter: drop-shadow(0 0 25px #00ffff);
-    }
-
+    #loader img { width: 150px; animation: pulseLogo 2s ease-in-out infinite; filter: drop-shadow(0 0 25px #00ffff); }
     @keyframes pulseLogo { 0%,100% { transform: scale(1); opacity:1 } 50% { transform: scale(1.1); opacity:0.8 } }
 
-    .loading-text {
-      font-family: 'Orbitron', sans-serif;
-      color: #00ffff;
-      margin-top: 25px;
-      font-size: 1.5em;
-      letter-spacing: 3px;
-      text-shadow: 0 0 15px #00ffff;
-    }
-
-    .progress-bar {
-      margin-top: 20px;
-      width: 60%;
-      height: 10px;
-      border-radius: 5px;
-      background: #003344;
-      overflow: hidden;
-    }
-
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #00ffff, #00ccff);
-      animation: loadProgress 3.5s ease-in-out forwards;
-    }
-
+    .loading-text { font-family: 'Orbitron', sans-serif; color: #00ffff; margin-top: 25px; font-size: 1.5em; letter-spacing: 3px; text-shadow: 0 0 15px #00ffff; }
+    .progress-bar { margin-top: 20px; width: 60%; height: 10px; border-radius: 5px; background: #003344; overflow: hidden; }
+    .progress { height: 100%; width: 0%; background: linear-gradient(90deg, #00ffff, #00ccff); animation: loadProgress 3.5s ease-in-out forwards; }
     @keyframes loadProgress { from { width: 0%; } to { width: 100%; } }
 
-    /* ==== MAIN CONTENT ==== */
-    header {
-      text-align: center;
-      padding: 70px 20px 30px;
-      z-index: 2;
-      position: relative;
-    }
-
-    header img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      box-shadow: 0 0 25px #00ffffaa;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
+    header { text-align: center; padding: 70px 20px 30px; z-index: 2; position: relative; }
+    header img { width: 130px; height: 130px; border-radius: 50%; box-shadow: 0 0 25px #00ffffaa; animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
     h1 {
@@ -132,17 +82,11 @@
     .subtitle { color: #b0faff; font-size: 1.2em; opacity: 0.8; }
 
     .desc {
-      max-width: 850px;
-      margin: 40px auto;
-      line-height: 1.8;
-      font-size: 1.1em;
-      text-align: center;
-      padding: 0 25px;
-      color: #b9ecff;
+      max-width: 850px; margin: 40px auto; line-height: 1.8; font-size: 1.1em;
+      text-align: center; padding: 0 25px; color: #b9ecff;
     }
 
     .features { text-align: center; margin-top: 50px; }
-
     .features h2 {
       font-family: 'Orbitron', sans-serif;
       color: #00ffcc;
@@ -150,13 +94,19 @@
       margin-bottom: 15px;
       text-shadow: 0 0 10px #00ffff;
     }
-
     .features ul { list-style: none; font-size: 1.05em; line-height: 2; color: #a0f0ff; }
     .features li::before { content: "☄ "; color: #00ffff; }
 
-    .download-btn {
+    .download-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .download-btn, .itch-btn {
       display: inline-block;
-      margin: 40px auto 10px;
       padding: 18px 45px;
       background: linear-gradient(90deg, #00ffff, #0088ff);
       border-radius: 40px;
@@ -172,19 +122,20 @@
     }
 
     @keyframes glowBtn { from { box-shadow: 0 0 15px #00ffff; } to { box-shadow: 0 0 35px #00ffff; } }
-    .download-btn:hover { transform: scale(1.1); background: linear-gradient(90deg, #00ccff, #00ffff); }
+    .download-btn:hover, .itch-btn:hover { transform: scale(1.1); background: linear-gradient(90deg, #00ccff, #00ffff); }
 
-    .dl-count {
+    #dl-count {
+      text-align: center;
+      margin-top: 10px;
       font-family: 'Orbitron', sans-serif;
       color: #00ffff;
       font-size: 1.1em;
-      margin-top: 10px;
-      text-shadow: 0 0 10px #00ffffaa;
+      text-shadow: 0 0 10px #00ffff;
     }
 
     .main-menu-btn {
       display: inline-block;
-      margin: 25px auto;
+      margin: 40px auto;
       padding: 12px 30px;
       background: linear-gradient(90deg, #00ffff, #0088ff);
       border-radius: 30px;
@@ -205,28 +156,13 @@
     .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 1.5s ease forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ==== METEORS ==== */
     .meteor {
-      position: absolute;
-      width: 2px;
-      height: 100px;
+      position: absolute; width: 2px; height: 100px;
       background: linear-gradient(45deg, #00ffff, rgba(0,255,255,0));
-      opacity: 0.8;
-      transform: rotate(45deg);
-      pointer-events: none;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 8px #00ffff);
+      opacity: 0.8; transform: rotate(45deg); pointer-events: none;
+      border-radius: 50%; filter: drop-shadow(0 0 8px #00ffff);
     }
-    .spark {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #00ffff;
-      border-radius: 50%;
-      filter: blur(2px);
-      opacity: 0.8;
-      pointer-events: none;
-    }
+    .spark { position: absolute; width: 4px; height: 4px; background: #00ffff; border-radius: 50%; filter: blur(2px); opacity: 0.8; pointer-events: none; }
   </style>
 </head>
 
@@ -264,21 +200,24 @@
     </ul>
   </div>
 
+  <div class="download-container fade-in">
+    <a class="download-btn" href="UntamedLands_v2.apk" download>⬇ Direct APK Download</a>
+    <a class="itch-btn" href="https://sasilu.itch.io/untamed-lands-by-siulo-studios" target="_blank">🎮 Play on Itch.io</a>
+  </div>
+
+  <p id="dl-count" class="fade-in">📦 Downloads: loading...</p>
+
   <div style="text-align:center;">
-    <!-- Direct APK Download -->
-    <a class="download-btn fade-in" href="UntamedLands_v2.apk" download>⬇ Download APK (v2.0.2)</a>
-    <p id="dl-count" class="dl-count fade-in">📦 Downloads: ...</p>
-    <br>
     <a class="main-menu-btn fade-in" href="index.html">🏠 Main Menu</a>
   </div>
 
   <footer class="fade-in">© 2025 Siulo Studios | Crafted by Sasilu — Powered by Unity Engine 🚀</footer>
 
   <script>
-    // Fade-in & stars & meteors
+    // Stars + meteors
     window.addEventListener("load", () => {
       const fadeElements = document.querySelectorAll(".fade-in");
-      fadeElements.forEach((el, i) => { setTimeout(() => el.style.animationDelay = i * 0.3 + "s", 0); });
+      fadeElements.forEach((el, i) => el.style.animationDelay = i * 0.3 + "s");
 
       for (let i = 0; i < 100; i++) {
         const star = document.createElement("div");
@@ -290,26 +229,21 @@
         document.querySelector(".stars").appendChild(star);
       }
 
-      const meteorCount = 5;
-      for(let i=0;i<meteorCount;i++) createMeteor();
+      for(let i=0;i<5;i++) createMeteor();
     });
 
-    // Meteors
     function createMeteor() {
       const meteor = document.createElement("div");
       meteor.classList.add("meteor");
       document.body.appendChild(meteor);
-
       function resetMeteor(m) {
         m.style.left = Math.random() * window.innerWidth + "px";
         m.style.top = -100 + "px";
         m.style.width = Math.random() * 3 + 2 + "px";
         m.style.height = Math.random() * 80 + 60 + "px";
         m.style.opacity = Math.random() * 0.5 + 0.5;
-
         const duration = Math.random() * 3 + 2;
         const endX = (Math.random()-0.5)*window.innerWidth;
-
         m.animate([
           { transform:`translateY(0px) translateX(0px) rotate(45deg)`, opacity: m.style.opacity },
           { transform:`translateY(${window.innerHeight+100}px) translateX(${endX}px) rotate(45deg)`, opacity:0 }
@@ -335,19 +269,18 @@
       }
     }
 
-    // === Download Counter ===
+    // Download counter
     const dlBtn = document.querySelector('.download-btn');
-    const dlCountEl = document.getElementById('dl-count');
+    const dlCount = document.getElementById('dl-count');
 
-    // Fetch current count
     fetch('https://api.countapi.xyz/get/siulo-studios/untamedlands')
       .then(r => r.json())
-      .then(d => dlCountEl.textContent = "📦 Downloads: " + d.value)
-      .catch(()=>dlCountEl.textContent="📦 Downloads: 0");
+      .then(d => dlCount.textContent = "📦 Downloads: " + d.value);
 
-    // Increment when clicked
     dlBtn.addEventListener('click', () => {
-      fetch('https://api.countapi.xyz/hit/siulo-studios/untamedlands');
+      fetch('https://api.countapi.xyz/hit/siulo-studios/untamedlands')
+        .then(r => r.json())
+        .then(d => dlCount.textContent = "📦 Downloads: " + d.value);
     });
   </script>
 </body>
